@@ -1,2 +1,2 @@
-# APCSC
-Another Pretty Cool Setup Script
+# **YAPCSS**
+> Yet Another Pretty Cool Setup Script
