@@ -35,6 +35,10 @@ function checkIfRoot() {
     fi
 }
 
+function setupSSH(){
+    
+}
+
 function createLog(){
     echo -e "$CYAN Creating logfile...\n$LIGHT_GREEN$PWD/apcss.log"
     touch apcss.log
@@ -42,16 +46,37 @@ function createLog(){
 }
 
 function update(){
-    echo -e ""
+    echo -e "$LIGHT_MAGENTA Updating Packages"
     {
         apt update && apt dist-upgrade -y
     } &> yapcss.log
 }
 
+function checkGit(){
+    if ! command -v git &> /dev/null
+        then
+            echo -e "$LIGHT_YELLOW Installing git..."
+            apt install git -y &> yapcss.log
+    fi
+}
+
+function setupShell(){
+   if ! command -v fish &> /dev/null
+        then
+            echo -e "$Magenta Installing fish..."
+            apt install fish -y &> yapcss.log
+            echo -e "$Magenta Installing Oh-My-Fish..."
+            curl -L https://get.oh-my.fish | fish &> yapcss.log
+            omf install bira &> yapcss.log
+    fi
+}
 
 clear
 echo -e "\n$BLUE Welcome to my Script.$RESET\n\n"
-# sleep 5
+sleep 5
 checkIfRoot
 createLog
-# update
+update
+checkGit
+setupShell
+
