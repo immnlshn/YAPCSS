@@ -1,4 +1,6 @@
 # **YAPCSS**
+Yet Another Pretty Cool Setup Script
 
-> Yet Another Pretty Cool Setup Script
+---
+⏸️ Paused development
 
